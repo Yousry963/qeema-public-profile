@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#141414">
+    <meta name="robots" content="noindex">
+    <title>Employee profile · Qeema</title>
+    <link rel="icon" href="assets/qeema-symbol.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css?v=6">
+    <script defer src="profile.js?v=6"></script>
+  </head>
+  <body>
+    <header class="hero" id="hero">
+      <canvas class="hero__network" id="network" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <nav class="shell topbar" aria-label="Qeema">
+        <a class="brand" href="https://www.qeema.net/" aria-label="Qeema website">
+          <img src="assets/qeema-logo-light.svg" alt="Qeema" width="109" height="32">
+        </a>
+        <button class="icon-button" id="copy-link" type="button" aria-label="Copy profile link" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 13.41a1.98 1.98 0 0 0 2.82 0l4-4a2 2 0 1 0-2.82-2.82l-1.3 1.29-1.41-1.41 1.29-1.3a4 4 0 1 1 5.66 5.66l-4 4a4 4 0 0 1-5.66 0zM13.41 10.59a1.98 1.98 0 0 0-2.82 0l-4 4a2 2 0 1 0 2.82 2.82l1.3-1.29 1.41 1.41-1.29 1.3a4 4 0 1 1-5.66-5.66l4-4a4 4 0 0 1 5.66 0z"/></svg>
+        </button>
+      </nav>
+
+      <section class="shell identity" id="identity" aria-labelledby="employee-name" hidden>
+        <figure class="portrait reveal">
+          <span class="portrait__ring" aria-hidden="true"></span>
+          <span class="portrait__frame">
+            <span id="initials" class="portrait__initials" aria-hidden="true"></span>
+            <img id="portrait" alt="" hidden>
+          </span>
+        </figure>
+
+        <div class="identity__text">
+          <p class="eyebrow reveal">Qeema team member</p>
+          <h1 class="reveal" id="employee-name"></h1>
+          <p class="identity__role reveal" id="job-title"></p>
+          <ul class="tags reveal" aria-label="Work details">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6V4H8v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-6 0h4v1h-4zM4 8h16v4h-6v-1h-4v1H4zm0 11v-5h6v1h4v-1h6v5z"/></svg>
+              <span id="department"></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7m0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5"/></svg>
+              <span id="work-location"></span>
+            </li>
+          </ul>
+
+          <div class="actions reveal">
+            <a class="action" id="quick-call">
+              <span class="action__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></svg></span>
+              <span>Call</span>
+            </a>
+            <a class="action" id="quick-email">
+              <span class="action__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+              <span>Email</span>
+            </a>
+            <button class="action action--primary" id="save-contact" type="button">
+              <span class="action__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 13h2v3h3v2h-3v3h-2v-3h-3v-2h3zm-7-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8m0 2c-2.67 0-8 1.34-8 4v2h10v-2c0-1.24.57-2.29 1.49-3.13A14.3 14.3 0 0 0 10 13"/></svg></span>
+              <span>Save contact</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main class="shell main">
+      <div class="profile-grid" id="profile" hidden>
+        <div class="column">
+          <section class="card reveal" aria-labelledby="contact-title">
+            <h2 id="contact-title"><span class="card__index">01</span>Get in touch</h2>
+            <a class="detail" id="work-email-link">
+              <span class="detail__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+              </span>
+              <span class="detail__text">
+                <span class="detail__label">Work email</span>
+                <span class="detail__value" id="work-email"></span>
+              </span>
+              <svg class="detail__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7m-9 0h9v9"/></svg>
+            </a>
+            <div id="phone-numbers"></div>
+          </section>
+        </div>
+
+        <div class="column">
+          <section class="card card--feature reveal" aria-labelledby="summary-title">
+            <h2 id="summary-title"><span class="card__index">02</span>About</h2>
+            <div class="summary" id="professional-summary"></div>
+          </section>
+
+          <section class="card journey-card reveal" aria-labelledby="experience-title">
+            <h2 id="experience-title"><span class="card__index">03</span>My Qeema journey</h2>
+            <dl class="journey-stats">
+              <div><dt>Years</dt><dd id="journey-years"></dd></div>
+              <div><dt>Roles</dt><dd id="journey-roles"></dd></div>
+              <div><dt>Joined</dt><dd id="journey-since"></dd></div>
+            </dl>
+            <ol class="journey" id="experience"></ol>
+            <p class="journey__next">The journey continues</p>
+          </section>
+
+          <section class="card reveal" id="certificates-section" aria-labelledby="certificates-title" hidden>
+            <h2 id="certificates-title">Certificates</h2>
+            <ul class="bullets" id="certificates"></ul>
+          </section>
+
+          <section class="card reveal" id="projects-section" aria-labelledby="projects-title" hidden>
+            <h2 id="projects-title">Key projects</h2>
+            <ul class="bullets" id="projects"></ul>
+          </section>
+        </div>
+      </div>
+
+      <section class="card empty" id="unavailable" hidden>
+        <img src="assets/qeema-symbol.svg" alt="" width="48" height="46">
+        <h1>Profile unavailable</h1>
+        <p class="muted">Check the link or scan the employee’s QR code again.</p>
+        <a class="pill" href="https://www.qeema.net/">Visit qeema.net</a>
+      </section>
+      <noscript><p class="card empty">Enable JavaScript to open this employee profile.</p></noscript>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer__content">
+        <img src="assets/qeema-logo-light.svg" alt="Qeema" width="109" height="32">
+        <p class="footer__tagline">Enable Partner Success</p>
+        <a class="pill pill--ghost" href="https://www.qeema.net/">Explore qeema.net</a>
+      </div>
+    </footer>
+
+    <template id="phone-template">
+      <a class="detail">
+        <span class="detail__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></svg>
+        </span>
+        <span class="detail__text">
+          <span class="detail__label"></span>
+          <span class="detail__value"></span>
+        </span>
+        <svg class="detail__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7m-9 0h9v9"/></svg>
+      </a>
+    </template>
+
+    <template id="experience-template">
+      <li class="journey__step">
+        <span class="journey__marker" aria-hidden="true"></span>
+        <div class="journey__card">
+          <span class="journey__tag"></span>
+          <h3 class="item-title"></h3>
+          <p class="journey__period"></p>
+        </div>
+      </li>
+    </template>
+
+    <div class="snackbar" id="feedback" role="status" aria-live="polite"></div>
+    <dialog class="dialog" id="share-dialog" aria-labelledby="share-title">
+      <form method="dialog">
+        <h2 id="share-title">Copy profile link</h2>
+        <input type="url" id="share-url" aria-label="Profile link" readonly>
+        <button class="pill">Done</button>
+      </form>
+    </dialog>
+  </body>
+</html>
